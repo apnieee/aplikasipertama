@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".NotaActivity">
+
+        <TextView
+            android:id="@+id/tvNota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Nota Transaksi"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#333333" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Warung Gagal Diet"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#333333" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+
+            <TextView
+                android:id="@+id/tvNamaPel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text=""
+                android:textColor="#333333"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text=""
+                android:textColor="#333333"/>
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/tbPesanan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:layout_marginTop="20dp"
+            android:padding="10dp">
+
+            <TableRow>
+                <TextView android:text="No" android:textStyle="bold"/>
+                <TextView android:text="Item" android:textStyle="bold"/>
+                <TextView android:text="Jumlah" android:textStyle="bold"/>
+                <TextView android:text="Subtotal" android:textStyle="bold"/>
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:id="@+id/tbNota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1,2,3"
+            android:padding="8dp"
+            android:layout_marginBottom="20dp">
+
+            <TableRow>
+                <TextView
+                    android:layout_span="3"
+                    android:text="Grand Total:"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:padding="8dp" />
+
+                <TextView
+                    android:id="@+id/tvGrandTotal"
+                    android:text="Rp0"
+                    android:gravity="end"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:padding="8dp" />
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+</ScrollView>

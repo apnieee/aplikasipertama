@@ -1,0 +1,218 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/Main"
+    tools:context=".CardActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/bgbiru"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/bg_header"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civaku"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="50dp"
+            android:src="@drawable/sipak"
+            app:layout_constraintTop_toTopOf="@id/bgbiru"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvjudul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sipak rawr"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/civaku"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvsubjudul"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="~hanya kepada Allah aku bersujud, dan di bahu Jisung aku bersandar~"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/tvjudul"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <LinearLayout
+                android:id="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tvjudul"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/tvdiri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Info Diri"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="125dp"
+                    android:layout_marginStart="20dp" />
+
+                <TextView
+                    android:id="@+id/tvnama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Lengkap"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/tvasa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Apni Syifa Alafidah"
+                    android:textSize="18sp"
+                    android:layout_marginStart="60dp" />
+
+                <TextView
+                    android:id="@+id/tvalamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/tvbnyr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Banyuanyar RT 02 RW 07"
+                    android:textSize="18sp"
+                    android:layout_marginStart="60dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor HP"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="082231257792"
+                    android:textSize="18sp"
+                    android:layout_marginStart="60dp" />
+
+                <TextView
+                    android:id="@+id/tvsosmed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ruang Online"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="20dp" />
+
+                <LinearLayout
+                    android:id="@+id/linear2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvsosmed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivinsto"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/insto"
+                        android:layout_marginStart="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="syfagratitude"
+                        android:textSize="20sp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/linear2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivtiktok"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/tiktok"
+                        android:layout_marginStart="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="bukan.opet"
+                        android:textSize="20sp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/linear2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivgithub"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/github"
+                        android:layout_marginStart="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="sipaakk"
+                        android:textSize="20sp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
