@@ -43,7 +43,7 @@ class KonversiSuhuActivity : AppCompatActivity() {
             val asalValue = etAsal.text.toString()
 
             if (asalValue.isEmpty()) {
-                Toast.makeText(this, "Isi dulu suhu asalnya yaa 😭", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Isi dulu suhu asalnya yaaaaaa", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 

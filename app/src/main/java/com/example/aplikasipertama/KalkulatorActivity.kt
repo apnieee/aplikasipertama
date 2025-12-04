@@ -10,9 +10,8 @@ class KalkulatorActivity : AppCompatActivity() {
 
     private lateinit var etangka: EditText
     private lateinit var tvHasil: TextView
-    private var angkaPertama: Double = 0.0
-    private var operator: String = ""
-    private var isOperatorPressed: Boolean = false
+    private var ekspresi: String = "" // Simpan seluruh ekspresi
+    private var angkaSekarang: String = "" // Angka yang sedang diketik
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +19,9 @@ class KalkulatorActivity : AppCompatActivity() {
 
         etangka = findViewById(R.id.etangka)
         tvHasil = findViewById(R.id.tvHasil)
+
+        // Nonaktifkan keyboard sistem
+        etangka.showSoftInputOnFocus = false
 
         val btn0: Button = findViewById(R.id.btn0)
         val btn1: Button = findViewById(R.id.btn1)
@@ -34,27 +36,20 @@ class KalkulatorActivity : AppCompatActivity() {
         val btn00: Button = findViewById(R.id.btn00)
         val btnKoma: Button = findViewById(R.id.btnKoma)
 
-        // Tombol operator
         val btnPlus: Button = findViewById(R.id.btnPlus)
         val btnKurang: Button = findViewById(R.id.btnKurang)
         val btnKali: Button = findViewById(R.id.btnKali)
         val btnBagi: Button = findViewById(R.id.btnBagi)
         val btnSaDeng: Button = findViewById(R.id.btnSaDeng)
 
-        // Tombol fungsi
         val btnC: Button = findViewById(R.id.btnC)
         val btnDel: Button = findViewById(R.id.btnDel)
 
-        // Set listener untuk tombol angka
+        // Tombol angka
         val numberClickListener = { angka: String ->
-            if (isOperatorPressed) {
-                etangka.setText("")
-                isOperatorPressed = false
-            }
-            val currentText = etangka.text.toString()
-            val newText = currentText + angka
-            etangka.setText(newText)
-            updateDisplay(newText)
+            angkaSekarang += angka
+            ekspresi += angka
+            updateDisplay()
         }
 
         btn0.setOnClickListener { numberClickListener("0") }
@@ -69,23 +64,30 @@ class KalkulatorActivity : AppCompatActivity() {
         btn9.setOnClickListener { numberClickListener("9") }
         btn00.setOnClickListener { numberClickListener("00") }
 
-        // Tombol koma (desimal)
+        // Tombol koma
         btnKoma.setOnClickListener {
-            val currentText = etangka.text.toString()
-            if (!currentText.contains(".") && currentText.isNotEmpty()) {
-                val newText = currentText + "."
-                etangka.setText(newText)
-                updateDisplay(newText)
+            if (!angkaSekarang.contains(".")) {
+                if (angkaSekarang.isEmpty()) {
+                    angkaSekarang = "0."
+                    ekspresi += "0."
+                } else {
+                    angkaSekarang += "."
+                    ekspresi += "."
+                }
+                updateDisplay()
             }
         }
 
-        // Set listener untuk operator
+        // Tombol operator
         val operatorClickListener = { op: String ->
-            val text = etangka.text.toString()
-            if (text.isNotEmpty()) {
-                angkaPertama = text.toDouble()
-                operator = op
-                isOperatorPressed = true
+            if (angkaSekarang.isNotEmpty()) {
+                ekspresi += op
+                angkaSekarang = ""
+                updateDisplay()
+            } else if (ekspresi.isNotEmpty() && ekspresi.last() in "+-*/") {
+                // Ganti operator terakhir jika double-press operator
+                ekspresi = ekspresi.dropLast(1) + op
+                updateDisplay()
             }
         }
 
@@ -94,68 +96,142 @@ class KalkulatorActivity : AppCompatActivity() {
         btnKali.setOnClickListener { operatorClickListener("*") }
         btnBagi.setOnClickListener { operatorClickListener("/") }
 
-        // Tombol sama dengan (=)
+        // Tombol sama dengan
         btnSaDeng.setOnClickListener {
-            val text = etangka.text.toString()
-            if (text.isNotEmpty() && operator.isNotEmpty()) {
-                val angkaKedua = text.toDouble()
-                val hasil = when (operator) {
-                    "+" -> angkaPertama + angkaKedua
-                    "-" -> angkaPertama - angkaKedua
-                    "*" -> angkaPertama * angkaKedua
-                    "/" -> {
-                        if (angkaKedua != 0.0) {
-                            angkaPertama / angkaKedua
-                        } else {
-                            etangka.setText("Error")
-                            tvHasil.text = "Error"
-                            return@setOnClickListener
-                        }
+            if (ekspresi.isNotEmpty() && angkaSekarang.isNotEmpty()) {
+                try {
+                    val hasil = evaluateExpression(ekspresi)
+
+                    val hasilText = if (hasil % 1.0 == 0.0) {
+                        hasil.toInt().toString()
+                    } else {
+                        hasil.toString()
                     }
-                    else -> 0.0
+
+                    // Tampilkan hasil di bawah (input baru)
+                    etangka.setText(hasilText)
+                    // Tampilkan ekspresi di atas
+                    tvHasil.text = ekspresi
+
+                    // Reset untuk operasi berikutnya
+                    ekspresi = hasilText
+                    angkaSekarang = hasilText
+
+                } catch (e: Exception) {
+                    tvHasil.text = "Error"
+                    etangka.setText("")
+                    ekspresi = ""
+                    angkaSekarang = ""
                 }
-
-                // Tampilkan hasil tanpa desimal jika bilangan bulat
-                val hasilText = if (hasil % 1.0 == 0.0) {
-                    hasil.toInt().toString()
-                } else {
-                    hasil.toString()
-                }
-
-                etangka.setText(hasilText)
-                tvHasil.text = hasilText
-
-                operator = ""
-                isOperatorPressed = true
             }
         }
 
-        // Tombol C (Clear)
+        // Tombol Clear
         btnC.setOnClickListener {
-            etangka.setText("")
+            ekspresi = ""
+            angkaSekarang = ""
             tvHasil.text = "0"
-            angkaPertama = 0.0
-            operator = ""
-            isOperatorPressed = false
+            etangka.setText("")
         }
 
         // Tombol Delete
         btnDel.setOnClickListener {
-            val text = etangka.text.toString()
-            if (text.isNotEmpty()) {
-                val newText = text.substring(0, text.length - 1)
-                etangka.setText(newText)
-                updateDisplay(newText)
+            if (ekspresi.isNotEmpty()) {
+                val lastChar = ekspresi.last()
+                ekspresi = ekspresi.dropLast(1)
+
+                if (lastChar.isDigit() || lastChar == '.') {
+                    if (angkaSekarang.isNotEmpty()) {
+                        angkaSekarang = angkaSekarang.dropLast(1)
+                    }
+                } else {
+                    // Jika operator dihapus
+                    angkaSekarang = ekspresi.takeLastWhile { it.isDigit() || it == '.' }
+                }
+
+                updateDisplay()
             }
         }
     }
 
-    // Fungsi untuk update display TextView
-    private fun updateDisplay(text: String) {
-        if (text.isEmpty()) {
-            tvHasil.text = "0"
-        } else {
-            tvHasil.text = text
-        }
+    private fun updateDisplay() {
+        // Tampilkan angka yang sedang diketik di bawah (etangka)
+        etangka.setText(if (angkaSekarang.isEmpty()) "" else angkaSekarang)
+        etangka.setSelection(etangka.text.length)
+
+        // Tampilkan ekspresi lengkap di atas (tvHasil)
+        tvHasil.text = if (ekspresi.isEmpty()) "0" else ekspresi
+    }
+
+    private fun evaluateExpression(expr: String): Double {
+        return object {
+            var pos = -1
+            var ch = 0
+
+            fun nextChar() {
+                ch = if (++pos < expr.length) expr[pos].code else -1
+            }
+
+            fun eat(charToEat: Int): Boolean {
+                while (ch == ' '.code) nextChar()
+                if (ch == charToEat) {
+                    nextChar()
+                    return true
+                }
+                return false
+            }
+
+            fun parse(): Double {
+                nextChar()
+                val x = parseExpression()
+                if (pos < expr.length) throw RuntimeException("Unexpected: " + ch.toChar())
+                return x
+            }
+
+            fun parseExpression(): Double {
+                var x = parseTerm()
+                while (true) {
+                    when {
+                        eat('+'.code) -> x += parseTerm() // Penjumlahan
+                        eat('-'.code) -> x -= parseTerm() // Pengurangan
+                        else -> return x
+                    }
+                }
+            }
+
+            fun parseTerm(): Double {
+                var x = parseFactor()
+                while (true) {
+                    when {
+                        eat('*'.code) -> x *= parseFactor() // Perkalian (prioritas lebih tinggi)
+                        eat('/'.code) -> {
+                            val divisor = parseFactor()
+                            if (divisor == 0.0) throw RuntimeException("Division by zero")
+                            x /= divisor
+                        }
+                        else -> return x
+                    }
+                }
+            }
+
+            fun parseFactor(): Double {
+                if (eat('+'.code)) return parseFactor() // Unary +
+                if (eat('-'.code)) return -parseFactor() // Unary -
+
+                val startPos = pos
+                if (eat('('.code)) { // Tanda kurung
+                    val x = parseExpression()
+                    eat(')'.code)
+                    return x
+                }
+
+                // Parse angka
+                while ((ch >= '0'.code && ch <= '9'.code) || ch == '.'.code) nextChar()
+
+                if (startPos == pos) throw RuntimeException("Unexpected character")
+
+                return expr.substring(startPos, pos).toDouble()
+            }
+        }.parse()
     }
 }

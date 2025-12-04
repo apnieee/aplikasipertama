@@ -37,34 +37,34 @@ class CardActivity : AppCompatActivity() {
 
         // Formulir
         cvMAINKoleksi.setOnClickListener {
-            Toast.makeText(this@CardActivity, "CardView Profil DiKlik", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@CardActivity, "CardView Formulir DiKlik", Toast.LENGTH_SHORT).show()
             val intent = Intent(this@CardActivity, FormActivity::class.java)
             startActivity(intent)
         }
 
         // Kalkulator
         cvMAINTentangKami.setOnClickListener {
-            Toast.makeText(this@CardActivity, "CardView Profil DiKlik", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@CardActivity, "CardView Kalkulator DiKlik", Toast.LENGTH_SHORT).show()
             val intent = Intent(this@CardActivity, KalkulatorActivity::class.java)
             startActivity(intent)
         }
 
-        // Warung Gagal Diet (Transaksi)
+        // Transaksi
         cvMAINPromo.setOnClickListener {
-            Toast.makeText(this@CardActivity, "CardView Profil DiKlik", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@CardActivity, "CardView Warung Gagal Diet DiKlik", Toast.LENGTH_SHORT).show()
             val intent = Intent(this@CardActivity, TransaksiActivity::class.java)
             startActivity(intent)
         }
 
         // Konversi Suhu
         cvMAINPanduan.setOnClickListener {
+            Toast.makeText(this@CardActivity, "CardView Konversi Suhu DiKlik", Toast.LENGTH_SHORT).show()
             val intent = Intent(this@CardActivity, KonversiSuhuActivity::class.java)
             startActivity(intent)
         }
 
         // Keluar (dengan dialog konfirmasi)
         cvMAINHubungi.setOnClickListener {
-            Toast.makeText(this@CardActivity, "CardView Profil DiKlik", Toast.LENGTH_SHORT).show()
             showExitDialog()
         }
 

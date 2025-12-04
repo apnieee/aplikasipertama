@@ -46,16 +46,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="numberDecimal"
+            android:textColor="@color/black"
             android:hint="Masukkan angka"
             android:minHeight="48dp"
-            android:padding="8dp"
-            android:background="@drawable/borderr" />
+            android:padding="8dp" />
 
         <Spinner
             android:id="@+id/spinnerasal"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:minHeight="48dp"
             android:padding="8dp"/>
     </LinearLayout>
@@ -91,14 +90,12 @@
             android:inputType="numberDecimal"
             android:hint="Masukkan angka"
             android:minHeight="48dp"
-            android:padding="8dp"
-            android:background="@drawable/borderr" />
+            android:padding="8dp" />
 
         <Spinner
             android:id="@+id/spinnerhasil"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:minHeight="48dp"
             android:padding="8dp"/>
     </LinearLayout>
