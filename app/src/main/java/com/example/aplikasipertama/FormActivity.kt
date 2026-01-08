@@ -1,6 +1,7 @@
 package com.example.aplikasipertama
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -12,6 +13,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.util.*
 
 class FormActivity : AppCompatActivity() {
 
@@ -30,29 +32,34 @@ class FormActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Load bahasa SEBELUM setContentView
+        loadLocale()
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_form)
 
-        // inisialisasi spinner agama
-        val spinnerAgama: Spinner = findViewById(R.id.spinnerAgama)
-        val agama = arrayOf("Islam", "Kristen", "Katolik", "Hindu", "Buddha", "Konghucu")
+        init()
+
+        // inisialisasi spinner agama dengan string resource (TIDAK DIUBAH)
+        val agama = resources.getStringArray(R.array.daftar_agama)
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, agama)
         spinnerAgama.adapter = adapter
-
-        init()
 
         btSimpan.setOnClickListener {
             val nama = etNama.text.toString()
             val alamat = etAlamat.text.toString()
             val nohp = etNomorHP.text.toString()
-            val jekel = if (rbLakiLaki.isChecked) "Laki-Laki" else "Perempuan"
+
+            // Ambil text dari RadioButton yang support multi-bahasa
+            val jekel = if (rbLakiLaki.isChecked) rbLakiLaki.text.toString() else rbPerempuan.text.toString()
             val agama = spinnerAgama.selectedItem.toString()
 
             val hobiList = mutableListOf<String>()
-            if (cbMembaca.isChecked) hobiList.add("Membaca")
-            if (cbMenanam.isChecked) hobiList.add("Menanam")
-            if (cbBerandai.isChecked) hobiList.add("Berandai")
-            if (cbTidur.isChecked) hobiList.add("Tidur")
+            if (cbMembaca.isChecked) hobiList.add(cbMembaca.text.toString())
+            if (cbMenanam.isChecked) hobiList.add(cbMenanam.text.toString())
+            if (cbBerandai.isChecked) hobiList.add(cbBerandai.text.toString())
+            if (cbTidur.isChecked) hobiList.add(cbTidur.text.toString())
 
             val hobi = hobiList.joinToString(", ")
 
@@ -73,6 +80,20 @@ class FormActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    // Fungsi untuk load bahasa yang tersimpan
+    private fun loadLocale() {
+        val prefs = getSharedPreferences("Settings", MODE_PRIVATE)
+        val language = prefs.getString("My_Lang", "id") ?: "id"
+
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.setLocale(locale)
+
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
     }
 
     private fun init() {

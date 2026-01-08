@@ -1,15 +1,76 @@
 <resources>
     <string name="app_name">aplikasi pertama</string>
-    <string name="title_activity_card">CardActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_card" translatable="false">CardActivity</string>
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="prompt_password" translatable="false">Password</string>
+    <string name="action_sign_in" translatable="false">Sign in or register</string>
+    <string name="action_sign_in_short" translatable="false">Sign in</string>
+    <string name="welcome" translatable="false">"Welcome !"</string>
+    <string name="invalid_username" translatable="false">Not a valid username</string>
+    <string name="invalid_password" translatable="false">Password must be >5 characters</string>
+    <string name="login_failed" translatable="false">"Login failed"</string>
     <string name="pilih_agama">Pilih Agama</string>
+    <string name="form_pendaftaran">Form Pendaftaran</string>
+    <string name="masukkan_nama_lengkap">Masukkan Nama Lengkap</string>
+    <string name="masukkan_nomer_hp">Masukkan Nomer HP</string>
+    <string name="masukkan_alamat_lengkap">Masukkan Alamat Lengkap</string>
+    <string name="jenis_kelamin">Jenis Kelamin:</string>
+    <string name="perempuan">Perempuan</string>
+    <string name="laki_laki">Laki-laki</string>
+    <string name="agama">Agama:</string>
+    <string name="hobi">Hobi:</string>
+    <string name="membaca">Membaca</string>
+    <string name="menanam">Menanam</string>
+    <string name="berandai">Berandai</string>
+    <string name="tidur">Tidur</string>
+    <string name="simpan">Simpan</string>
+    <string name="hasil_pendaftaran">Hasil Pendaftaran</string>
+    <string name="kembali">Kembali</string>
+    <string name="konversi_suhu">Konversi Suhu</string>
+    <string name="suhu_asal">Suhu Asal</string>
+    <string name="suhu">Suhu 1</string>
+    <string name="masukkan_angka">Masukkan angka</string>
+    <string name="hasil_konversi">Hasil Konversi</string>
+    <string name="suhu2">Suhu 2</string>
+    <string name="masukkan_angka2">Masukkan angka</string>
+    <string name="proses">Proses</string>
+    <string name="nota_transaksi">Nota Transaksi</string>
+    <string name="no">No</string>
+    <string name="produk">Produk</string>
+    <string name="jumlah">Jumlah</string>
+    <string name="total">Total</string>
+    <string name="total_pembayaran">Total Pembayaran:</string>
+    <string name="hanya_kepada_allah_aku_bersujud_dan_di_bahu_jisung_aku_bersandar">~hanya kepada Allah aku bersujud, dan di bahu Jisung aku bersandar~</string>
+    <string name="info_diri">Info Diri</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="alamat">Alamat</string>
+    <string name="nomor_hp">Nomor HP</string>
+    <string name="ruang_online">Ruang Online</string>
+    <string name="form_transaksi">Form Transaksi</string>
+    <string name="makanan">Makanan</string>
+    <string name="minuman">Minuman</string>
+    <string name="nama_pelanggan">Nama Pelanggan</string>
+    <string name="masukkan_nama_kamu">Masukkan Nama Kamu</string>
+    <string name="hitung">Hitung</string>
+    <string name="masukkan_angkaa">Masukkan Angka</string>
+    <string name="hapus">Hapus</string>
+    <string name="hps">Hps</string>
+    <string name="masukkan_angkaaa">Masukkan Angka</string>
+    <string name="menu_utama">Menu Utama</string>
+    <string name="menu_lain">Menu Lain</string>
+    <string name="menu_tambahan">Menu Tambahan</string>
+    <string name="profil">Profil</string>
+    <string name="formulir">Formulir</string>
+    <string name="kalkulator">Kalkulator</string>
+    <string name="konversi_suhuu">Konversi Suhu</string>
+    <string name="keluar">Keluar</string>
+    <string name="menu_utamaa">Menu Utama</string>
+    <string name="profill">Profil</string>
+    <string name="formulirr">Formulir</string>
+    <string name="kalkulatorr">Kalkulator</string>
+    <string name="menu_lainn">Menu Lain</string>
+    <string name="konversi_suhuuu">Konversi Suhu</string>
+    <string name="keluarr">Keluar</string>
     <string-array name="daftar_agama">
         <item>Islam</item>
         <item>Kristen</item>

@@ -1,10 +1,12 @@
 package com.example.aplikasipertama
 
 import androidx.appcompat.app.AppCompatActivity
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.*
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.util.*
 
 class KonversiSuhuActivity : AppCompatActivity() {
 
@@ -16,6 +18,10 @@ class KonversiSuhuActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Load bahasa SEBELUM setContentView
+        loadLocale()
+
         setContentView(R.layout.activity_konversi_suhu_acivity)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -56,6 +62,20 @@ class KonversiSuhuActivity : AppCompatActivity() {
         }
     }
 
+    // Fungsi untuk load bahasa yang tersimpan
+    private fun loadLocale() {
+        val prefs = getSharedPreferences("Settings", MODE_PRIVATE)
+        val language = prefs.getString("My_Lang", "id") ?: "id"
+
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.setLocale(locale)
+
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+    }
+
     private fun convertSuhu(value: Double, from: String, to: String): Double {
         // ubah ke Celsius dulu
         val celsius = when (from) {
@@ -73,5 +93,4 @@ class KonversiSuhuActivity : AppCompatActivity() {
             else -> celsius
         }
     }
-
 }

@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Konversi Suhu"
+        android:text="@string/konversi_suhu"
         android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Suhu Asal"
+        android:text="@string/suhu_asal"
         android:textSize="25sp"
         android:textStyle="bold"
         android:layout_marginTop="16dp"
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Suhu"
+            android:text="@string/suhu"
             android:textSize="20sp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="15dp"/>
@@ -47,7 +47,7 @@
             android:layout_weight="1"
             android:inputType="numberDecimal"
             android:textColor="@color/black"
-            android:hint="Masukkan angka"
+            android:hint="@string/masukkan_angka"
             android:minHeight="48dp"
             android:padding="8dp" />
 
@@ -62,7 +62,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hasil Konversi"
+        android:text="@string/hasil_konversi"
         android:textSize="25sp"
         android:textStyle="bold"
         android:layout_marginTop="16dp"
@@ -77,7 +77,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Suhu"
+            android:text="@string/suhu2"
             android:textSize="20sp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="15dp"/>
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="numberDecimal"
-            android:hint="Masukkan angka"
+            android:hint="@string/masukkan_angka2"
             android:minHeight="48dp"
             android:padding="8dp" />
 
@@ -104,7 +104,7 @@
         android:id="@+id/btnProses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Proses"
+        android:text="@string/proses"
         android:textSize="16sp"
         android:padding="12dp"
         android:layout_marginTop="8dp"/>

@@ -1,5 +1,6 @@
 package com.example.aplikasipertama
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -7,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.util.*
 
 class HasilFormActivity : AppCompatActivity() {
     lateinit var tvNama: TextView
@@ -16,9 +18,12 @@ class HasilFormActivity : AppCompatActivity() {
     lateinit var tvAgama: TextView
     lateinit var tvHobi: TextView
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Load bahasa SEBELUM setContentView
+        loadLocale()
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_hasil_form)
         init()
@@ -29,12 +34,25 @@ class HasilFormActivity : AppCompatActivity() {
             finish()
         }
 
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    // Fungsi untuk load bahasa yang tersimpan
+    private fun loadLocale() {
+        val prefs = getSharedPreferences("Settings", MODE_PRIVATE)
+        val language = prefs.getString("My_Lang", "id") ?: "id"
+
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.setLocale(locale)
+
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
     }
 
     fun init() {
@@ -44,9 +62,6 @@ class HasilFormActivity : AppCompatActivity() {
         tvJenisKelamin = findViewById(R.id.tvJekel)
         tvAgama = findViewById(R.id.tvAgama)
         tvHobi = findViewById(R.id.tvHobi)
-
-
-
     }
 
     fun getData() {
@@ -57,18 +72,12 @@ class HasilFormActivity : AppCompatActivity() {
         val agama = intent.getStringExtra("agama").toString()
         val hobi = intent.getStringExtra("hobi").toString()
 
-
-
-
-
-
-        tvNama.text = "Nama Lengkap: $nama"
-        tvNomorHP.text = "Nomor HP: $nohp"
-        tvAlamat.text = "Alamat Lengkap: $alamat"
-        tvJenisKelamin.text = "Jenis Kelamin: $jeniskelamin"
-        tvAgama.text = "Agama: $agama"
-        tvHobi.text = "Hobi: $hobi"
-
-
+        // Gunakan string resource untuk label supaya support multi-bahasa
+        tvNama.text = "${getString(R.string.nama_lengkap)}: $nama"
+        tvNomorHP.text = "${getString(R.string.nomor_hp)}: $nohp"
+        tvAlamat.text = "${getString(R.string.alamat)}: $alamat"
+        tvJenisKelamin.text = "${getString(R.string.jenis_kelamin)}: $jeniskelamin"
+        tvAgama.text = "${getString(R.string.agama)}: $agama"
+        tvHobi.text = "${getString(R.string.hobi)}: $hobi"
     }
 }

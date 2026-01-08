@@ -1,5 +1,6 @@
 package com.example.aplikasipertama
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.TableLayout
 import android.widget.TableRow
@@ -18,6 +19,10 @@ class NotaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Load bahasa SEBELUM setContentView
+        loadLocale()
+
         setContentView(R.layout.activity_nota)
 
         // Inisialisasi views
@@ -105,6 +110,20 @@ class NotaActivity : AppCompatActivity() {
 
         // Set grand total
         tvGrandTotal.text = rupiahFormat.format(grandTotal)
+    }
+
+    // Fungsi untuk load bahasa yang tersimpan
+    private fun loadLocale() {
+        val prefs = getSharedPreferences("Settings", MODE_PRIVATE)
+        val language = prefs.getString("My_Lang", "id") ?: "id"
+
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.setLocale(locale)
+
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
     }
 
     private fun addTableRow(no: Int, item: String, jumlah: Int, subtotal: Int, rupiahFormat: NumberFormat) {

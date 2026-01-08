@@ -1,11 +1,13 @@
 package com.example.aplikasipertama
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import de.hdodenhof.circleimageview.CircleImageView
+import java.util.*
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -19,12 +21,29 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Load bahasa SEBELUM setContentView
+        loadLocale()
+
         setContentView(R.layout.activity_profile)
 
         initViews()
         setupClickListeners()
         enforceTextColors()
+    }
 
+    // Fungsi untuk load bahasa yang tersimpan
+    private fun loadLocale() {
+        val prefs = getSharedPreferences("Settings", MODE_PRIVATE)
+        val language = prefs.getString("My_Lang", "id") ?: "id"
+
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.setLocale(locale)
+
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
     }
 
     private fun initViews() {

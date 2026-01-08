@@ -1,10 +1,12 @@
 package com.example.aplikasipertama
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.util.*
 
 class KalkulatorActivity : AppCompatActivity() {
 
@@ -15,6 +17,10 @@ class KalkulatorActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Load bahasa SEBELUM setContentView
+        loadLocale()
+
         setContentView(R.layout.activity_kalkulator)
 
         etangka = findViewById(R.id.etangka)
@@ -152,6 +158,20 @@ class KalkulatorActivity : AppCompatActivity() {
                 updateDisplay()
             }
         }
+    }
+
+    // Fungsi untuk load bahasa yang tersimpan
+    private fun loadLocale() {
+        val prefs = getSharedPreferences("Settings", MODE_PRIVATE)
+        val language = prefs.getString("My_Lang", "id") ?: "id"
+
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.setLocale(locale)
+
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
     }
 
     private fun updateDisplay() {

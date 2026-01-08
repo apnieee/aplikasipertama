@@ -21,7 +21,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="24dp"
         android:gravity="center"
-        android:text="Form Pendaftaran"
+        android:text="@string/form_pendaftaran"
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="#333333" />
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Masukkan Nama Lengkap"
+        android:hint="@string/masukkan_nama_lengkap"
         android:inputType="textPersonName"
         android:padding="12dp" />
 
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Masukkan Nomer HP"
+        android:hint="@string/masukkan_nomer_hp"
         android:inputType="phone"
         android:padding="12dp" />
 
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Masukkan Alamat Lengkap"
+        android:hint="@string/masukkan_alamat_lengkap"
         android:inputType="textPostalAddress"
         android:padding="12dp" />
 
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Jenis Kelamin:"
+        android:text="@string/jenis_kelamin"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#333333" />
@@ -74,7 +74,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Perempuan"
+            android:text="@string/perempuan"
             android:padding="8dp" />
 
         <RadioButton
@@ -82,7 +82,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Laki-laki"
+            android:text="@string/laki_laki"
             android:padding="8dp" />
     </RadioGroup>
 
@@ -90,7 +90,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Agama:"
+        android:text="@string/agama"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#333333" />
@@ -109,7 +109,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Hobi:"
+        android:text="@string/hobi"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#333333" />
@@ -118,28 +118,28 @@
         android:id="@+id/cbMembaca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Membaca"
+        android:text="@string/membaca"
         android:padding="8dp" />
 
     <CheckBox
         android:id="@+id/cbMenanam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Menanam"
+        android:text="@string/menanam"
         android:padding="8dp" />
 
     <CheckBox
         android:id="@+id/cbBerandai"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Berandai"
+        android:text="@string/berandai"
         android:padding="8dp" />
 
     <CheckBox
         android:id="@+id/cbTidur"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tidur"
+        android:text="@string/tidur"
         android:padding="8dp" />
 
     <Button
@@ -149,7 +149,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24dp"
         android:backgroundTint="#2196F3"
-        android:text="Simpan"
+        android:text="@string/simpan"
         android:textColor="#FFFFFF" />
 
 </LinearLayout>

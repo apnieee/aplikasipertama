@@ -12,6 +12,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:id="@+id/languageSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/tvLanguageLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#666666"
+                android:layout_marginEnd="4dp"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:minHeight="48dp"
+                android:scaleX="0.8"
+                android:scaleY="0.8" />
+
+            <TextView
+                android:id="@+id/tvLanguageLabel2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EN"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#666666"
+                android:layout_marginStart="4dp"/>
+
+        </LinearLayout>
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/civAku"
             android:layout_width="80dp"
@@ -38,7 +79,7 @@
             android:id="@+id/tvMenuUtama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Menu Utama"
+            android:text="@string/menu_utamaa"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#666666"
@@ -46,7 +87,6 @@
             app:layout_constraintTop_toBottomOf="@id/tvJudul"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <!-- BARIS 1: Profil, Formulir, Kalkulator -->
         <androidx.cardview.widget.CardView
             android:id="@+id/berandaCard"
             android:layout_width="0dp"
@@ -80,7 +120,7 @@
                     android:id="@+id/tvBeranda"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Profil"
+                    android:text="@string/profill"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -126,7 +166,7 @@
                     android:id="@+id/tvKoleksi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Formulir"
+                    android:text="@string/formulirr"
                     android:textColor="#333333"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -173,7 +213,7 @@
                     android:id="@+id/tvTentangKami"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kalkulator"
+                    android:text="@string/kalkulatorr"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -189,7 +229,7 @@
             android:id="@+id/tvMenuLain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Menu Lain"
+            android:text="@string/menu_lainn"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#666666"
@@ -197,7 +237,6 @@
             app:layout_constraintTop_toBottomOf="@id/berandaCard"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <!-- BARIS 2: Warung Gagal Diet, Konversi Suhu, Keluar -->
         <androidx.cardview.widget.CardView
             android:id="@+id/promoCard"
             android:layout_width="0dp"
@@ -277,7 +316,7 @@
                     android:id="@+id/tvPanduanBelanja"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Konversi Suhu"
+                    android:text="@string/konversi_suhu"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="#333333"
@@ -322,7 +361,7 @@
                     android:id="@+id/tvHubungi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Keluar"
+                    android:text="@string/keluar"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"

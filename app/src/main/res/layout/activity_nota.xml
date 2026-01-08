@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Nota Transaksi"
+            android:text="@string/nota_transaksi"
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="#333333" />
@@ -73,10 +73,10 @@
             android:padding="10dp">
 
             <TableRow>
-                <TextView android:text="No" android:textStyle="bold"/>
-                <TextView android:text="Item" android:textStyle="bold"/>
-                <TextView android:text="Jumlah" android:textStyle="bold"/>
-                <TextView android:text="Subtotal" android:textStyle="bold"/>
+                <TextView android:text="@string/no" android:textStyle="bold"/>
+                <TextView android:text="@string/produk" android:textStyle="bold"/>
+                <TextView android:text="@string/jumlah" android:textStyle="bold"/>
+                <TextView android:text="@string/total" android:textStyle="bold"/>
             </TableRow>
         </TableLayout>
 
@@ -91,7 +91,7 @@
             <TableRow>
                 <TextView
                     android:layout_span="3"
-                    android:text="Grand Total:"
+                    android:text="@string/total_pembayaran"
                     android:gravity="end"
                     android:textStyle="bold"
                     android:textSize="16sp"

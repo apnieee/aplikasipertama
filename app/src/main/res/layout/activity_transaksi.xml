@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Form Transaksi"
+            android:text="@string/form_transaksi"
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Makanan"
+            android:text="@string/makanan"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -136,7 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:text="Minuman"
+            android:text="@string/minuman"
             android:textSize="20dp"
             android:textStyle="bold"/>
 
@@ -280,7 +280,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:text="Nama Pelanggan"
+            android:text="@string/nama_pelanggan"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -289,7 +289,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Masukkan Nama Kamu"
+            android:hint="@string/masukkan_nama_kamu"
             android:inputType="textPersonName"
             android:padding="12dp" />
 
@@ -301,7 +301,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
             android:backgroundTint="#4CAF50"
-            android:text="Hitung"
+            android:text="@string/hitung"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 </ScrollView>

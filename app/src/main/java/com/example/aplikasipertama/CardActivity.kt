@@ -1,14 +1,17 @@
 package com.example.aplikasipertama
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.util.*
 
 class CardActivity : AppCompatActivity() {
     // langkah 1 membuat variabel
@@ -18,14 +21,24 @@ class CardActivity : AppCompatActivity() {
     lateinit var cvMAINPromo: CardView
     lateinit var cvMAINPanduan: CardView
     lateinit var cvMAINHubungi: CardView
+    lateinit var switchLanguage: SwitchCompat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Load bahasa SEBELUM setContentView
+        loadLocale()
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_card2)
 
         //langkah 4, memanggil fun init()
         init()
+
+        // Set posisi switch sesuai bahasa saat ini
+        val currentLang = getSharedPreferences("Settings", MODE_PRIVATE)
+            .getString("My_Lang", "id")
+        switchLanguage.isChecked = currentLang == "en"
 
         //langkah 5 menambahkan kode onclick pada cardview
         // Profil
@@ -68,6 +81,21 @@ class CardActivity : AppCompatActivity() {
             showExitDialog()
         }
 
+        // Switch Language
+        switchLanguage.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // Ganti ke bahasa English
+                setLocale("en")
+                Toast.makeText(this, "Language changed to English", Toast.LENGTH_SHORT).show()
+            } else {
+                // Ganti ke bahasa Indonesia
+                setLocale("id")
+                Toast.makeText(this, "Bahasa diganti ke Indonesia", Toast.LENGTH_SHORT).show()
+            }
+            // Restart activity untuk apply perubahan bahasa
+            recreate()
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.Main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -91,6 +119,36 @@ class CardActivity : AppCompatActivity() {
             .show()
     }
 
+    // Fungsi untuk ganti bahasa
+    private fun setLocale(languageCode: String) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.setLocale(locale)
+
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+
+        // Simpan pilihan bahasa di SharedPreferences
+        val editor = getSharedPreferences("Settings", MODE_PRIVATE).edit()
+        editor.putString("My_Lang", languageCode)
+        editor.apply()
+    }
+
+    // Fungsi untuk load bahasa yang tersimpan
+    private fun loadLocale() {
+        val prefs = getSharedPreferences("Settings", MODE_PRIVATE)
+        val language = prefs.getString("My_Lang", "id") ?: "id"
+
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.setLocale(locale)
+
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+    }
+
     // langkah 2 membuat fun baru
     fun init(){
         //langkah 3 mengisikan variabel
@@ -100,5 +158,6 @@ class CardActivity : AppCompatActivity() {
         cvMAINPromo = findViewById(R.id.promoCard)
         cvMAINPanduan = findViewById(R.id.panduanBelanjaCard)
         cvMAINHubungi = findViewById(R.id.hubungiCard)
+        switchLanguage = findViewById(R.id.switchLanguage)
     }
 }
